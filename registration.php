@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Handle Step 4 data if needed
         $_SESSION['step'] = 5;
     } elseif ($_SESSION['step'] == 5) {
+        // Handle Step 4 data if needed
+        $_SESSION['step'] = 6;
+    } elseif ($_SESSION['step'] == 6) {
         // Handle Step 5 data if needed
         // Clear the session to reset the process
         session_unset();
@@ -141,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- Heading -->
                 <div style="text-align: center; margin-top: 20px;">
-                    <h3>Step 1: Get Started</h3>
+                    <h3>Get Started</h3>
                 </div>
 
                 <!-- Lorem Ipsum Text -->
@@ -169,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="submit" value="Next">
             </form>
         <?php elseif ($_SESSION['step'] == 3) : ?>
-            <h2>Step 3: Upload Documents</h2>
+            <h2>Upload Documents</h2>
             <form action="registration.php" method="post" enctype="multipart/form-data">
                 <label for="documents">Upload Documents:</label>
                 <input type="file" name="documents[]" multiple required><br><br>
@@ -177,7 +180,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="submit" value="Next">
             </form>
         <?php elseif ($_SESSION['step'] == 4) : ?>
-            <h2>Step 4: Electronic Signature</h2>
+            <h2> Agree to Terms & Conditions</h2>
+            <div style="text-align: center; margin-top: 20px;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec mauris urna. Proin aliquet nulla eu ligula feugiat, ac bibendum turpis venenatis. Sed ac ligula quis arcu suscipit auctor.</p>
+            </div>
+            <form action="registration.php" method="post">
+                <!-- Add your terms & conditions form elements here -->
+                <input type="submit" value="Next">
+            </form>
+        <?php elseif ($_SESSION['step'] == 5) : ?>
+            <h2>Electronic Signature</h2>
             <div class="signature-pad">
                 <canvas id="signature-canvas" width="400" height="200"></canvas>
                 <button id="clear-button">Clear</button>
@@ -205,8 +217,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     document.getElementById('signature-data').value = signatureData;
                 });
             </script>
-        <?php elseif ($_SESSION['step'] == 5) : ?>
-            <h2>Step 5: Thank You</h2>
+        <?php elseif ($_SESSION['step'] == 6) : ?>
+            <h2>Thank You</h2>
             <p>Thank you for registering!</p>
         <?php endif; ?>
     </div>
